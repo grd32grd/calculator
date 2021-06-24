@@ -107,6 +107,7 @@ public class calculatorApp extends Application{
                 view.result.clear();
             }
         });
+
         view.add.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -139,6 +140,25 @@ public class calculatorApp extends Application{
                 view.result.clear();
             }
         });
+
+        view.sign.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (view.result.getText().contains("-")){
+                    view.result.setText(view.result.getText().substring(1));
+                }
+                else {
+                    view.result.setText("-" + view.result.getText());
+                }
+            }
+        });
+        view.percent.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                view.result.setText(String.valueOf(Double.parseDouble(view.result.getText())/100));
+            }
+        });
+
         view.equals.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
