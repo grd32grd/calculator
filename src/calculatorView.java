@@ -9,8 +9,12 @@ import javafx.scene.control.TextField;
 
 //View Class
 public class calculatorView extends Pane {
-    Button zero, period, equals, one, two, three, plus, four, five, six, minus, seven, eight, nine, multiply, clear, sign, percent, divide;
+    Button zero, period, equals, one, two, three, add, four, five, six, subtract, seven, eight, nine, multiply, clear, sign, percent, divide;
     TextField result;
+
+    public void update(){
+
+    }
 
     public calculatorView() {
         zero = new Button("0");
@@ -37,9 +41,9 @@ public class calculatorView extends Pane {
         three.setPrefSize(50,50);
         three.relocate(115,250);
 
-        plus = new Button("+");
-        plus.setPrefSize(50,50);
-        plus.relocate(170,250);
+        add = new Button("+");
+        add.setPrefSize(50,50);
+        add.relocate(170,250);
 
         four = new Button("4");
         four.setPrefSize(50,50);
@@ -53,9 +57,9 @@ public class calculatorView extends Pane {
         six.setPrefSize(50,50);
         six.relocate(115,195);
 
-        minus = new Button("-");
-        minus.setPrefSize(50,50);
-        minus.relocate(170,195);
+        subtract = new Button("-");
+        subtract.setPrefSize(50,50);
+        subtract.relocate(170,195);
 
         seven = new Button("7");
         seven.setPrefSize(50,50);
@@ -93,7 +97,7 @@ public class calculatorView extends Pane {
         result.setPrefSize(215,75);
         result.relocate(5,5);
 
-        getChildren().addAll(zero, period, equals, one, two, three, plus, four, five, six, minus, seven, eight, nine, multiply, clear, sign, percent, divide, result);
+        getChildren().addAll(zero, period, equals, one, two, three, add, four, five, six, subtract, seven, eight, nine, multiply, clear, sign, percent, divide, result);
         setPrefSize(225, 360);
 
 
