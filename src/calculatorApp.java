@@ -15,6 +15,7 @@ public class calculatorApp extends Application{
     String operation;
     ArrayList<Double> numbers = new ArrayList<>();
 
+
     public void start(Stage primaryStage) {
 
         //Pane initialization.
@@ -122,6 +123,22 @@ public class calculatorApp extends Application{
                 view.result.clear();
             }
         });
+        view.multiply.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                operation = "multiply";
+                numbers.add(Double.parseDouble(view.result.getText()));
+                view.result.clear();
+            }
+        });
+        view.divide.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                operation = "divide";
+                numbers.add(Double.parseDouble(view.result.getText()));
+                view.result.clear();
+            }
+        });
         view.equals.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -141,6 +158,30 @@ public class calculatorApp extends Application{
                     numbers.add(Double.parseDouble(view.result.getText()));
                     for (int i = 1; i < numbers.size(); i++) {
                         answer -= numbers.get(i);
+                    }
+
+                    view.result.setText(String.valueOf(answer));
+                    answer = 0.0;
+                    numbers.clear();
+                }
+
+                else if (operation == "multiply") {
+                    answer = numbers.get(0);
+                    numbers.add(Double.parseDouble(view.result.getText()));
+                    for (int i = 1; i < numbers.size(); i++) {
+                        answer *= numbers.get(i);
+                    }
+
+                    view.result.setText(String.valueOf(answer));
+                    answer = 0.0;
+                    numbers.clear();
+                }
+
+                else if (operation == "divide") {
+                    answer = numbers.get(0);
+                    numbers.add(Double.parseDouble(view.result.getText()));
+                    for (int i = 1; i < numbers.size(); i++) {
+                        answer /= numbers.get(i);
                     }
 
                     view.result.setText(String.valueOf(answer));
