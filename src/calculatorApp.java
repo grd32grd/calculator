@@ -8,10 +8,15 @@ import javafx.stage.Stage;
 public class calculatorApp extends Application{
     public void start(Stage primaryStage) {
 
+        //Pane initialization.
+        Pane aPane = new Pane();
+        calculatorView  view = new calculatorView();
+        aPane.getChildren().add(view);
+
         //Stage initialization.
         primaryStage.setTitle("Calculator");
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(new Pane(), 300, 500));
+        primaryStage.setScene(new Scene(aPane));
         primaryStage.show();
     }
 
