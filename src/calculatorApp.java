@@ -10,6 +10,11 @@ import java.util.ArrayList;
 
 //Controller Class
 public class calculatorApp extends Application{
+
+    Double answer = 0.0;
+    String operation;
+    ArrayList<Double> numbers = new ArrayList<>();
+
     public void start(Stage primaryStage) {
 
         //Pane initialization.
@@ -22,8 +27,6 @@ public class calculatorApp extends Application{
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(aPane));
         primaryStage.show();
-
-        ArrayList<Double> addends = new ArrayList<>();
 
 
         view.zero.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -106,19 +109,43 @@ public class calculatorApp extends Application{
         view.add.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                addends.add(Double.parseDouble(view.result.getText()));
-                String addend1 = view.result.getText();
+                operation = "add";
+                numbers.add(Double.parseDouble(view.result.getText()));
+                view.result.clear();
+            }
+        });
+        view.subtract.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                operation = "subtract";
+                numbers.add(Double.parseDouble(view.result.getText()));
                 view.result.clear();
             }
         });
         view.equals.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                Double answer = 0.0;
-                for (int i = 0; i < addends.size(); i++){
-                    answer += addends.get(i);
-                answer += Double.parseDouble(view.result.getText());
-                view.result.setText(String.valueOf(answer));
+                if (operation == "add") {
+                    numbers.add(Double.parseDouble(view.result.getText()));
+                    for (int i = 0; i < numbers.size(); i++) {
+                        answer += numbers.get(i);
+                    }
+
+                    view.result.setText(String.valueOf(answer));
+                    answer = 0.0;
+                    numbers.clear();
+                }
+
+                else if (operation == "subtract") {
+                    answer = numbers.get(0);
+                    numbers.add(Double.parseDouble(view.result.getText()));
+                    for (int i = 1; i < numbers.size(); i++) {
+                        answer -= numbers.get(i);
+                    }
+
+                    view.result.setText(String.valueOf(answer));
+                    answer = 0.0;
+                    numbers.clear();
                 }
             }
         });
