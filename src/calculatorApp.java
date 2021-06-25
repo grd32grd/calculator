@@ -21,6 +21,7 @@ public class calculatorApp extends Application{
         //Pane initialization.
         Pane aPane = new Pane();
         calculatorView  view = new calculatorView();
+        view.setStyle("-fx-background-color: black;");
         aPane.getChildren().add(view);
 
         //Stage initialization.
