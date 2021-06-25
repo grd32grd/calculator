@@ -18,9 +18,6 @@ public class calculatorView extends Pane {
     Font resultFont = Font.font("Calibri", FontWeight.EXTRA_BOLD, 22);
     Font buttonFont = Font.font("Calibri", FontWeight.BOLD, 16);
 
-    //String fontStyle =  "-fx-text-fill: white;";
-    //String backStyle = "-fx-background-color: black;";
-
     String numberStyle = "-fx-text-fill: #FFFFFF; -fx-background-color: #333333";
     String operationStyle = "-fx-text-fill: #FFFFFF; -fx-background-color: #F2A33C";
     String functionStyle = "-fx-text-fill: #000000; -fx-background-color: #A5A5A5";

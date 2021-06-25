@@ -11,9 +11,9 @@ import java.util.ArrayList;
 //Controller Class
 public class calculatorApp extends Application{
 
-    Double answer = 0.0;
+    Float answer = Float.valueOf(0);
     String operation;
-    ArrayList<Double> numbers = new ArrayList<>();
+    ArrayList<Float> numbers = new ArrayList<>();
 
 
     public void start(Stage primaryStage) {
@@ -122,7 +122,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "add";
-                numbers.add(Double.parseDouble(view.result.getText()));
+                numbers.add(Float.parseFloat(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -130,7 +130,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "subtract";
-                numbers.add(Double.parseDouble(view.result.getText()));
+                numbers.add(Float.parseFloat(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -138,7 +138,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "multiply";
-                numbers.add(Double.parseDouble(view.result.getText()));
+                numbers.add(Float.parseFloat(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -146,7 +146,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "divide";
-                numbers.add(Double.parseDouble(view.result.getText()));
+                numbers.add(Float.parseFloat(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -165,7 +165,7 @@ public class calculatorApp extends Application{
         view.percent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                view.result.setText(String.valueOf(Double.parseDouble(view.result.getText())/100));
+                view.result.setText(String.valueOf(Float.parseFloat(view.result.getText())/100));
             }
         });
 
@@ -173,51 +173,41 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (operation == "add") {
-                    numbers.add(Double.parseDouble(view.result.getText()));
+                    numbers.add(Float.parseFloat(view.result.getText()));
                     for (int i = 0; i < numbers.size(); i++) {
                         answer += numbers.get(i);
                     }
-
                     view.result.setText(String.valueOf(answer));
-                    answer = 0.0;
-                    numbers.clear();
                 }
 
                 else if (operation == "subtract") {
                     answer = numbers.get(0);
-                    numbers.add(Double.parseDouble(view.result.getText()));
+                    numbers.add(Float.parseFloat(view.result.getText()));
                     for (int i = 1; i < numbers.size(); i++) {
                         answer -= numbers.get(i);
                     }
-
                     view.result.setText(String.valueOf(answer));
-                    answer = 0.0;
-                    numbers.clear();
                 }
 
                 else if (operation == "multiply") {
                     answer = numbers.get(0);
-                    numbers.add(Double.parseDouble(view.result.getText()));
+                    numbers.add(Float.parseFloat(view.result.getText()));
                     for (int i = 1; i < numbers.size(); i++) {
                         answer *= numbers.get(i);
                     }
-
                     view.result.setText(String.valueOf(answer));
-                    answer = 0.0;
-                    numbers.clear();
                 }
 
                 else if (operation == "divide") {
                     answer = numbers.get(0);
-                    numbers.add(Double.parseDouble(view.result.getText()));
+                    numbers.add(Float.parseFloat(view.result.getText()));
                     for (int i = 1; i < numbers.size(); i++) {
                         answer /= numbers.get(i);
                     }
-
-                    view.result.setText(String.valueOf(answer));
-                    answer = 0.0;
-                    numbers.clear();
+                    view.result.setText(String.format("%2f",answer));
                 }
+                answer = Float.valueOf(0);
+                numbers.clear();
             }
         });
 
