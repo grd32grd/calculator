@@ -100,6 +100,15 @@ public class calculatorApp extends Application{
                 view.result.setText(current + "9");
             }
         });
+        view.period.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (!view.result.getText().contains(".")){
+                    String current = view.result.getText();
+                    view.result.setText(current + ".");
+                }
+            }
+        });
 
         view.clear.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
