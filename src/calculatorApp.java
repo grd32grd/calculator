@@ -11,9 +11,17 @@ import java.util.ArrayList;
 //Controller Class
 public class calculatorApp extends Application{
 
-    Float answer = Float.valueOf(0);
+    Double answer = Double.valueOf(0);
     String operation;
-    ArrayList<Float> numbers = new ArrayList<>();
+    ArrayList<Double> numbers = new ArrayList<>();
+
+    /*public String rounding(float result){
+       if (String.valueOf(result).contains(".0")){
+           //return String.format("%f",answer);
+       } else {
+           //return String.format("%2f",answer);
+       }
+    }*/
 
 
     public void start(Stage primaryStage) {
@@ -122,7 +130,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "add";
-                numbers.add(Float.parseFloat(view.result.getText()));
+                numbers.add(Double.parseDouble(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -130,7 +138,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "subtract";
-                numbers.add(Float.parseFloat(view.result.getText()));
+                numbers.add(Double.parseDouble(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -138,7 +146,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "multiply";
-                numbers.add(Float.parseFloat(view.result.getText()));
+                numbers.add(Double.parseDouble(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -146,7 +154,7 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 operation = "divide";
-                numbers.add(Float.parseFloat(view.result.getText()));
+                numbers.add(Double.parseDouble(view.result.getText()));
                 view.result.clear();
             }
         });
@@ -173,40 +181,40 @@ public class calculatorApp extends Application{
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (operation == "add") {
-                    numbers.add(Float.parseFloat(view.result.getText()));
+                    numbers.add(Double.parseDouble(view.result.getText()));
                     for (int i = 0; i < numbers.size(); i++) {
                         answer += numbers.get(i);
                     }
-                    view.result.setText(String.valueOf(answer));
+                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
                 }
 
                 else if (operation == "subtract") {
                     answer = numbers.get(0);
-                    numbers.add(Float.parseFloat(view.result.getText()));
+                    numbers.add(Double.parseDouble(view.result.getText()));
                     for (int i = 1; i < numbers.size(); i++) {
                         answer -= numbers.get(i);
                     }
-                    view.result.setText(String.valueOf(answer));
+                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
                 }
 
                 else if (operation == "multiply") {
                     answer = numbers.get(0);
-                    numbers.add(Float.parseFloat(view.result.getText()));
+                    numbers.add(Double.parseDouble(view.result.getText()));
                     for (int i = 1; i < numbers.size(); i++) {
                         answer *= numbers.get(i);
                     }
-                    view.result.setText(String.valueOf(answer));
+                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
                 }
 
                 else if (operation == "divide") {
                     answer = numbers.get(0);
-                    numbers.add(Float.parseFloat(view.result.getText()));
+                    numbers.add(Double.parseDouble(view.result.getText()));
                     for (int i = 1; i < numbers.size(); i++) {
                         answer /= numbers.get(i);
                     }
-                    view.result.setText(String.format("%2f",answer));
+                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
                 }
-                answer = Float.valueOf(0);
+                answer = Double.valueOf(0);
                 numbers.clear();
             }
         });
@@ -217,5 +225,6 @@ public class calculatorApp extends Application{
 
     public static void main(String[] args) {
         launch(args);
+        System.out.println();
     }
 }
