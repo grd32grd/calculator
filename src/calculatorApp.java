@@ -15,13 +15,9 @@ public class calculatorApp extends Application{
     String operation;
     ArrayList<Double> numbers = new ArrayList<>();
 
-    /*public String rounding(float result){
-       if (String.valueOf(result).contains(".0")){
-           //return String.format("%f",answer);
-       } else {
-           //return String.format("%2f",answer);
-       }
-    }*/
+    public double rounding(double result){
+        return (Math.round(answer * 10000000d) / 10000000d);
+    }
 
 
     public void start(Stage primaryStage) {
@@ -185,7 +181,7 @@ public class calculatorApp extends Application{
                     for (int i = 0; i < numbers.size(); i++) {
                         answer += numbers.get(i);
                     }
-                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
+                    view.result.setText(String.valueOf(rounding(answer)));
                 }
 
                 else if (operation == "subtract") {
@@ -194,7 +190,7 @@ public class calculatorApp extends Application{
                     for (int i = 1; i < numbers.size(); i++) {
                         answer -= numbers.get(i);
                     }
-                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
+                    view.result.setText(String.valueOf(rounding(answer)));
                 }
 
                 else if (operation == "multiply") {
@@ -203,7 +199,7 @@ public class calculatorApp extends Application{
                     for (int i = 1; i < numbers.size(); i++) {
                         answer *= numbers.get(i);
                     }
-                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
+                    view.result.setText(String.valueOf(rounding(answer)));
                 }
 
                 else if (operation == "divide") {
@@ -212,7 +208,7 @@ public class calculatorApp extends Application{
                     for (int i = 1; i < numbers.size(); i++) {
                         answer /= numbers.get(i);
                     }
-                    view.result.setText(String.valueOf((double)Math.round(answer * 100000d) / 100000d));
+                    view.result.setText(String.valueOf(rounding(answer)));
                 }
                 answer = Double.valueOf(0);
                 numbers.clear();
